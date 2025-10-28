@@ -1,60 +1,114 @@
 # GitHub Pages Deployment Guide
 
-This project is configured for deployment to GitHub Pages at the root directory `/`.
+Proyek ini dikonfigurasi untuk deployment ke GitHub Pages di **https://wiwink17-hub.github.io/** pada direktori root `/`.
 
-## Configuration
+## Konfigurasi Yang Sudah Diterapkan
 
-### Vite Configuration
-The `vite.config.ts` has been configured with:
-- `base: "/"` - This ensures the app runs from the root directory of GitHub Pages
-- `host: "0.0.0.0"` - Allows the dev server to be accessible
-- `port: 5000` - Standard port for Replit development
+### ✅ Vite Configuration (`vite.config.ts`)
+- `base: "/"` - Aplikasi berjalan di root directory
+- `build.outDir: "dist"` - Output build ke folder dist
+- `build.assetsDir: "assets"` - Asset files di folder assets
+- `host: "0.0.0.0"` & `port: 5000` - Server development
 
-### GitHub Actions Workflow
-A GitHub Actions workflow has been created at `.github/workflows/deploy.yml` that will:
-1. Automatically build your project when you push to the `main` branch
-2. Deploy the built files to GitHub Pages
+### ✅ React Router Fix untuk GitHub Pages
+- File `public/404.html` - Redirect untuk SPA routing
+- Script redirect di `index.html` - Handle navigasi client-side
+- File `public/.nojekyll` - Bypass Jekyll processing
 
-## Setup Steps
+### ✅ GitHub Actions Workflow (`.github/workflows/deploy.yml`)
+Otomatis build dan deploy saat push ke branch `main`
 
-### 1. Enable GitHub Pages
-1. Go to your GitHub repository
-2. Click on **Settings** → **Pages**
-3. Under **Source**, select **GitHub Actions**
+## Langkah-Langkah Deployment
 
-### 2. Push Your Code
+### 1. Pastikan Repository Name Benar
+Repository harus bernama: **`wiwink17-hub.github.io`**
+
+Jika nama repository berbeda, ubah dengan cara:
+1. Buka Settings repository di GitHub
+2. Scroll ke "Repository name"
+3. Ubah menjadi `wiwink17-hub.github.io`
+4. Klik "Rename"
+
+### 2. Aktifkan GitHub Pages
+1. Buka repository di GitHub: `https://github.com/wiwink17-hub/wiwink17-hub.github.io`
+2. Klik **Settings** → **Pages**
+3. Pada **Source**, pilih **GitHub Actions**
+4. Save perubahan
+
+### 3. Push Code ke GitHub
 ```bash
+# Add semua file
 git add .
-git commit -m "Configure for GitHub Pages deployment"
+
+# Commit dengan message
+git commit -m "Setup untuk GitHub Pages deployment"
+
+# Push ke branch main
 git push origin main
 ```
 
-### 3. Wait for Deployment
-- The GitHub Actions workflow will automatically run
-- Check the **Actions** tab in your repository to see the deployment progress
-- Once complete, your site will be available at: `https://yourusername.github.io/repository-name/`
+### 4. Tunggu Deployment Selesai
+1. Buka tab **Actions** di repository GitHub
+2. Lihat progress workflow "Deploy to GitHub Pages"
+3. Tunggu hingga status berubah menjadi ✅ (hijau)
+4. Website akan tersedia di: **https://wiwink17-hub.github.io/**
 
-### For User/Organization Pages
-If you're deploying to `username.github.io` (user or organization page):
-- The site will be available at `https://username.github.io/`
-- Make sure your repository is named `username.github.io`
+## Development Lokal
 
-## Local Development
-Run the development server:
+### Install Dependencies
 ```bash
 npm install
-npm run dev
 ```
 
-The app will be available at `http://localhost:5000`
+### Run Development Server
+```bash
+npm run dev
+```
+Aplikasi akan berjalan di: `http://localhost:5000`
 
-## Build for Production
+### Build untuk Production
 ```bash
 npm run build
 ```
+Hasil build ada di folder `dist/`
 
-This creates a `dist` folder with optimized production files.
+### Preview Production Build
+```bash
+npm run preview
+```
 
-## Notes
-- The `.nojekyll` file in the `public` folder ensures GitHub Pages serves files starting with underscore
-- All assets are configured to load from the root path `/`
+## Troubleshooting
+
+### Jika Halaman Tidak Muncul
+1. **Cek Actions Tab** - Pastikan workflow berhasil (hijau ✅)
+2. **Cek Settings → Pages** - Pastikan source adalah "GitHub Actions"
+3. **Tunggu 2-5 menit** - GitHub Pages butuh waktu untuk propagate
+4. **Hard Refresh Browser** - Tekan `Ctrl + Shift + R` (Windows/Linux) atau `Cmd + Shift + R` (Mac)
+
+### Jika Routing Tidak Bekerja (404 Error)
+- ✅ Sudah diperbaiki dengan script redirect di `index.html` dan `404.html`
+- Halaman seperti `/shop`, `/about`, `/contact` akan bekerja dengan baik
+
+### Jika Asset Tidak Load
+- ✅ Sudah dikonfigurasi dengan `base: "/"` di vite.config.ts
+- Semua asset akan load dari root path
+
+## File-File Penting
+
+- ✅ `vite.config.ts` - Konfigurasi Vite untuk GitHub Pages
+- ✅ `.github/workflows/deploy.yml` - Workflow otomatis deployment
+- ✅ `public/.nojekyll` - Bypass Jekyll
+- ✅ `public/404.html` - SPA redirect untuk routing
+- ✅ `index.html` - Script redirect untuk React Router
+
+## URL Website
+
+Setelah deployment berhasil, website dapat diakses di:
+**https://wiwink17-hub.github.io/**
+
+## Catatan Penting
+
+1. **Branch**: Deployment otomatis dari branch `main`
+2. **Auto Deploy**: Setiap push ke `main` akan trigger deployment baru
+3. **React Router**: Semua route (`/`, `/shop`, `/about`, dll) akan bekerja dengan baik
+4. **Assets**: Semua gambar, CSS, JS akan load dari root path `/`
