@@ -1,6 +1,10 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2529872260076672"
        crossorigin="anonymous"></script>
     <!-- aa -->
@@ -13,8 +17,6 @@
     <script>
        (adsbygoogle = window.adsbygoogle || []).push({});
     </script>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MODEVA - Luxury Fashion Collection</title>
     <meta name="description" content="Discover timeless elegance with MODEVA's curated collection of luxury fashion. Shop the latest trends in contemporary style." />
     <meta name="author" content="MODEVA" />
@@ -49,7 +51,25 @@
   </head>
 
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!-- Loading indicator while JavaScript loads -->
+      <div style="display: flex; align-items: center; justify-content: center; min-height: 100vh; background-color: #faf8f5;">
+        <div style="text-align: center;">
+          <div style="font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 600; color: #1a1a1a; margin-bottom: 1rem;">
+            MODEVA
+          </div>
+          <div style="font-family: 'Inter', sans-serif; font-size: 0.875rem; color: #737373; letter-spacing: 0.1em;">
+            Loading...
+          </div>
+        </div>
+      </div>
+    </div>
+    <noscript>
+      <div style="padding: 2rem; text-align: center; font-family: 'Inter', sans-serif;">
+        <h1>JavaScript Required</h1>
+        <p>Please enable JavaScript in your browser to view this website.</p>
+      </div>
+    </noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
