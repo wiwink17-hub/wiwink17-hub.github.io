@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 35 20% 97%;
+    --foreground: 0 0% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 10%;
+
+    --primary: 0 0% 10%;
+    --primary-foreground: 35 20% 97%;
+
+    --secondary: 35 35% 88%;
+    --secondary-foreground: 0 0% 10%;
+
+    --muted: 35 20% 92%;
+    --muted-foreground: 0 0% 45%;
+
+    --accent: 30 45% 65%;
+    --accent-foreground: 0 0% 10%;
+
+    --destructive: 0 65% 50%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 35 15% 85%;
+    --input: 35 15% 85%;
+    --ring: 0 0% 10%;
+
+    --radius: 0.25rem;
+
+    /* Fashion-specific tokens */
+    --fashion-hero-bg: 35 25% 95%;
+    --fashion-overlay: 0 0% 0%;
+    --fashion-gold: 42 78% 65%;
+  }
+
+  .dark {
+    --background: 0 0% 10%;
+    --foreground: 35 20% 97%;
+
+    --card: 0 0% 15%;
+    --card-foreground: 35 20% 97%;
+
+    --popover: 0 0% 15%;
+    --popover-foreground: 35 20% 97%;
+
+    --primary: 35 20% 97%;
+    --primary-foreground: 0 0% 10%;
+
+    --secondary: 0 0% 20%;
+    --secondary-foreground: 35 20% 97%;
+
+    --muted: 0 0% 20%;
+    --muted-foreground: 0 0% 60%;
+
+    --accent: 30 45% 65%;
+    --accent-foreground: 0 0% 10%;
+
+    --destructive: 0 65% 50%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 35 20% 97%;
+
+    --fashion-hero-bg: 0 0% 15%;
+    --fashion-overlay: 0 0% 0%;
+    --fashion-gold: 42 78% 65%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
